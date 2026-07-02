@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Creator Agent</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="logo-text">AI Video Creator</span>
+            </div>
+            <div class="header-badge">
+                <span class="badge-dot"></span>
+                Powered by Gemini & DALL-E
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section glass-panel">
+                <div class="section-header">
+                    <h2>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Create Your Video
+                    </h2>
+                    <p>Enter a topic or prompt, and our AI will generate a complete video script with images</p>
+                </div>
+
+                <form id="videoForm" class="video-form">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <textarea 
+                                id="promptInput" 
+                                name="prompt" 
+                                placeholder="Enter your video topic or prompt... (e.g., 'The future of artificial intelligence in healthcare')"
+                                rows="4"
+                                required
+                            ></textarea>
+                            <div class="input-glow"></div>
+                        </div>
+                    </div>
+
+                    <div class="options-row">
+                        <div class="option-group">
+                            <label for="duration">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                Duration
+                            </label>
+                            <select id="duration" name="duration">
+                                <option value="15">15 seconds</option>
+                                <option value="30" selected>30 seconds</option>
+                                <option value="60">60 seconds</option>
+                                <option value="90">90 seconds</option>
+                            </select>
+                        </div>
+
+                        <div class="option-group">
+                            <label for="style">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Style
+                            </label>
+                            <select id="style" name="style">
+                                <option value="cinematic" selected>Cinematic</option>
+                                <option value="animated">Animated</option>
+                                <option value="realistic">Realistic</option>
+                                <option value="abstract">Abstract</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Generate Video</span>
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <div class="btn-loader">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="progress-section glass-panel" id="progressSection" style="display: none;">
+                <div class="section-header">
+                    <h2>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2V6M12 18V22M6 12H2M22 12H18M19.07 4.93L16.24 7.76M7.76 16.24L4.93 19.07M19.07 19.07L16.24 16.24M7.76 7.76L4.93 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Creating Your Video
+                    </h2>
+                    <p>Our AI is working its magic...</p>
+                </div>
+
+                <div class="progress-steps">
+                    <div class="progress-step" data-step="script">
+                        <div class="step-icon">
+                            <div class="step-circle">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="step-loader">
+                                <div class="spinner-small"></div>
+                            </div>
+                            <div class="step-check">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="step-info">
+                            <span class="step-title">Generating Script</span>
+                            <span class="step-status">Waiting...</span>
+                        </div>
+                    </div>
+
+                    <div class="progress-connector"></div>
+
+                    <div class="progress-step" data-step="images">
+                        <div class="step-icon">
+                            <div class="step-circle">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="step-loader">
+                                <div class="spinner-small"></div>
+                            </div>
+                            <div class="step-check">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="step-info">
+                            <span class="step-title">Creating Images</span>
+                            <span class="step-status">Waiting...</span>
+                        </div>
+                    </div>
+
+                    <div class="progress-connector"></div>
+
+                    <div class="progress-step" data-step="video">
+                        <div class="step-icon">
+                            <div class="step-circle">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <polygon points="23 7 16 12 23 17 23 7" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="step-loader">
+                                <div class="spinner-small"></div>
+                            </div>
+                            <div class="step-check">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="step-info">
+                            <span class="step-title">Assembling Video</span>
+                            <span class="step-status">Waiting...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p class="progress-text" id="progressText">Initializing...</p>
+            </section>
+
+            <!-- Script Preview Section -->
+            <section class="script-section glass-panel" id="scriptSection" style="display: none;">
+                <div class="section-header">
+                    <h2>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M4 6H20M4 12H20M4 18H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Generated Script
+                    </h2>
+                    <p id="scriptTitle">Your video script is ready</p>
+                </div>
+
+                <div class="scenes-list" id="scenesList">
+                    <!-- Scenes will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Video Preview Section -->
+            <section class="video-section glass-panel" id="videoSection" style="display: none;">
+                <div class="section-header">
+                    <h2>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M23 7L16 12L23 17V7Z" stroke="currentColor" stroke-width="2"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Your Video
+                    </h2>
+                    <p>Your AI-generated video is ready!</p>
+                </div>
+
+                <div class="video-container">
+                    <video id="videoPlayer" controls playsinline>
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay" id="videoOverlay">
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-actions">
+                    <button class="action-btn download-btn" id="downloadBtn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 10L12 15L17 10M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Download Video
+                    </button>
+                    <button class="action-btn share-btn" id="shareBtn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8.59 13.51L15.42 17.49M15.41 6.51L8.59 10.49" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        Share
+                    </button>
+                    <button class="action-btn new-btn" id="newVideoBtn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Create New Video
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with ❤️ using FastAPI, Gemini & DALL-E</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

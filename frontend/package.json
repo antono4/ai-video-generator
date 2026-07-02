@@ -1,0 +1,13 @@
+{
+  "name": "ai-video-creator-frontend",
+  "version": "1.0.0",
+  "description": "AI Video Creator Agent - Frontend",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -p 3000"
+  },
+  "keywords": ["video", "ai", "generator", "creator"],
+  "author": "",
+  "license": "MIT"
+}
