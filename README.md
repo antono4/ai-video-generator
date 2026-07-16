@@ -1,5 +1,8 @@
 # 🎬 AI Video Creator Agent
 
+> **Created by Antono**
+
+
 Aplikasi web modern yang menghasilkan video pendek dari teks prompt menggunakan kecerdasan buatan. Aplikasi ini membuat script video, membuat gambar untuk setiap adegan, dan merakitnya menjadi video MP4 vertikal (9:16) yang cocok untuk Shorts/Reels/TikTok.
 
 ![Dark Glassmorphism UI](https://via.placeholder.com/800x450/0a0e17/6366f1?text=AI+Video+Creator)
