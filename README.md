@@ -1,1 +1,26 @@
-Last updated: 2026-09-13 05:49:44 WIB
+# ai-video-generator
+
+
+
+## 📋 Overview
+
+This repository contains **23 files** and is built with the following technologies:
+
+Not detected
+
+## 🚀 Quick Start
+
+## ✨ Features
+
+- 📝 Auto-generated documentation
+
+## 🛠️ Technologies
+
+Not detected
+
+## 📄 License
+
+MIT License
+
+---
+*Last updated: 2026-09-13 06:01:43 WIB*
