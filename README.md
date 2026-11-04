@@ -11,7 +11,7 @@
   <a href="https://github.com/antono4/ai-video-generator"><img alt="GitHub repo" src="https://img.shields.io/badge/GitHub-antono4/ai-video-generator-blue?logo=github"></a>
   <a href="https://antono4.github.io/ai-video-generator/"><img alt="Live Demo" src="https://img.shields.io/badge/Live%20Demo-Online-success?logo=githubpages"></a>
   <img alt="Files" src="https://img.shields.io/badge/Files-24-informational">
-  <img alt="Updated" src="https://img.shields.io/badge/Updated-2026-11-04 18:30:54 WIB-lightgrey">
+  <img alt="Updated" src="https://img.shields.io/badge/Updated-2026-11-05 01:50:13 WIB-lightgrey">
 </p>
 
 ---
@@ -73,5 +73,4 @@ Lihat berkas [`LICENSE`](./LICENSE) untuk informasi lisensi.
 
 ---
 
-<sub>README ini di-generate otomatis pada **2026-11-04 18:30:54 WIB** oleh GitHub Actions `.github/workflows/generate-readme.yml`.</sub>
-Last updated: 2026-11-05 01:47:19 WIB
+<sub>README ini di-generate otomatis pada **2026-11-05 01:50:13 WIB** oleh GitHub Actions `.github/workflows/generate-readme.yml`.</sub>
